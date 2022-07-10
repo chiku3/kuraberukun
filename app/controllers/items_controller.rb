@@ -4,4 +4,11 @@ class ItemsController < ApplicationController
 
   def show
   end
+  
+  
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :hight, :weight, :image)
+  end
 end
