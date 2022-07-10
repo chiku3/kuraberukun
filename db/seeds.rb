@@ -4,4 +4,15 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.fir
+
+require "csv"
+CSV.foreach('db/csv/items.csv',headers: true) do |row|
+  Item.create(
+    name:     row['name'],
+    hight:     row['hight'],
+    weight:     row['weight'],
+    image_id:     row['image'],
+    comment:     row['comment']
+  )
+end
