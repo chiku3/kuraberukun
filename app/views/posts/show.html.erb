@@ -1,2 +1,7 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1>くらべた結果</h1>
+
+<%= @post.hight %>
+<%= @post.weight %>
+
+<%= link_to "やり直す", post_path(@post), method: :delete %>
+<%= link_to "くらべる一覧", items_path %>
