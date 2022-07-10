@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
   def create
     @post = Post.new(post_params)
     @post.save
@@ -8,6 +8,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @item = Item.order("RANDOM()").limit(1)
+    
   end
 
   def destroy
@@ -15,7 +17,7 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to root_path
   end
-  
+
   private
 
   def post_params

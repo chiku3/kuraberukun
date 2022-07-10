@@ -6,10 +6,10 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
-  
+
   private
 
   def item_params
-    params.require(:item).permit(:name, :hight, :weight, :image, :comm)
+    params.require(:item).permit(:name, :hight, :weight, :image, :comment)
   end
 end

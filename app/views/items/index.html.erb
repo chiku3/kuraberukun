@@ -1,5 +1,19 @@
 <h1>くらべる一覧</h1>
 
-<% @items.each do |item| %>
-  <%= link_to item.name, item_path(item) %>
-<% end %>
+
+    <table>
+        <thead>
+            <tr>
+                <th>なまえ</th>
+                <th>おもさ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @items.each do |item| %>
+            <tr>
+                <td><%= link_to item.name, item_path(item) %></td>
+                <td><%= item.weight %>Kg</td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>

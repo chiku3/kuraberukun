@@ -1,6 +1,17 @@
-<h1>こんにちは</h1>
+<h1><%= @item.name %></h1>
 
 
-<%= @item.name %>
+<%= image_tag @item.image_id, size: '320x240' %>
+
+<table>
+  <tr>
+    <th>おもさ</th>
+    <td><%= @item.weight %></td>
+  </tr>
+  <tr>
+    <th>解　説</th>
+    <td><%= @item.comment %></td>
+  </tr>
+</table>
 
 
