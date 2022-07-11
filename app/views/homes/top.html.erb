@@ -1,15 +1,15 @@
 <h1>くらべるくん</h1>
-<p>ここではいろんな物の高さや重さを"何か"と比べているよ。<br>
-  君は何と同じくらいなのかな。</p>
-  
-  
-<%= form_with model:@post, url: posts_path, local:true do |f| %>
+<p>ここでは重さをいろいろな"何か"と比べているよ。<br>
+  君は調べたいものは何と同じくらいかな。</p>
+
+
+<%= form_with model: @post, url: posts_path, local:true do |f| %>
   <%= f.label :hight, 'たかさ' %>
   <%= f.text_field :hight %>
-  
+
   <%= f.label :wight, 'おもさ' %>
   <%= f.text_field :weight %>
-  
+
   <%= f.submit "くらべてみる" %>
 <% end %>
 

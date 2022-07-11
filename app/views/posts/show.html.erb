@@ -1,24 +1,25 @@
 <div>
-    <h1>くらべた結果</h1>
-</div>
-
-<div>
     <% @item.each do |item| %>
-      <%= image_tag item.image_id, size: '320x240' %>
-      <%= link_to item.name, item_path(item) %>
-
-      <% if item.weight > @post.weight %>　　<!--比較対象が入力値より大きい場合-->
-          <%= Rational(@post.weight, item.weight) %><%= item.unit %>
-      <% else %>
-          <%= (@post.weight / item.weight).round.to_s(:delimited) %><%= item.unit %> <!--比較対象が入力値より小さい場合-->
-      <% end %>
-
+        <% if item.weight > @post.weight %>　　<!--比較対象が入力値より大きい場合-->
+           <h1><%= link_to item.name, item_path(item) %> は <%= @post.weight %>Kg の <%= (item.weight / @post.weight).round.to_s(:delimited) %>倍 です
+           </h1>
+        <% else %>. <!--比較対象が入力値より小さい場合-->
+           <h1><%= @post.weight %> Kgは <%= link_to item.name, item_path(item) %> <%= (@post.weight / item.weight).round.to_s(:delimited) %><%= item.unit %>ぶんです 
+           </h1>
+        <% end %>
+        
+        <%= image_tag item.image_id, size: '320x240' %>
     <% end %>
 </div>
+
 
     <%= @post.weight %>
 
 <div>
-    <%= link_to "もう一度", post_path(@post), method: :delete %> <!--比較対象が入力値より小さい場合-->
-    <%= link_to "くらべる一覧", items_path %>
+    <%= form_with model: @post, url: post_path(@post), local: true do |f| %>
+        <%= f.hidden_field :weight, :value => @post.weight %>
+        <%= f.submit "もう一度" %>
+    <% end %>
+    
+    <%= link_to "もどる", post_path(@post), method: :delete %>
 </div>

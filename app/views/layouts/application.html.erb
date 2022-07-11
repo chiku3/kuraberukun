@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    
+    <header class="mb-5">
+      <nav class="navbar navbar-expend-md navbar-light bg-light border-bottom border-dark">
+        <div class="container">
+          <h1 class="navbar-brand p-3"><%= link_to"くらべるくん", root_path %></h1>
+          
+          <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item pr-2"><%= link_to"くらべる一覧", items_path, class:"btn btn-outline-secondary pr-1" %></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    
     <%= yield %>
   </body>
 </html>
