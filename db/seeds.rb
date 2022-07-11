@@ -8,11 +8,12 @@
 
 require "csv"
 CSV.foreach('db/csv/items.csv',headers: true) do |row|
-  Item.create(
+  Item.create!(
     name:     row['name'],
     hight:     row['hight'],
     weight:     row['weight'],
+    unit:     row['unit'],
     image_id:     row['image'],
-    comment:     row['comment']
+    comment:     row['comment'],
   )
 end

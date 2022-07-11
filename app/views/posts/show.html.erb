@@ -7,10 +7,10 @@
       <%= image_tag item.image_id, size: '320x240' %>
       <%= link_to item.name, item_path(item) %>
 
-      <% if item.weight / @post.weight >= 1 %>
-          <%= (item.weight / @post.weight).round(1) %>
+      <% if item.weight > @post.weight %>　　<!--比較対象が入力値より大きい場合-->
+          <%= Rational(@post.weight, item.weight) %><%= item.unit %>
       <% else %>
-          <%= (@post.weight / item.weight).round(1) %>
+          <%= (@post.weight / item.weight).round.to_s(:delimited) %><%= item.unit %> <!--比較対象が入力値より小さい場合-->
       <% end %>
 
     <% end %>
@@ -19,6 +19,6 @@
     <%= @post.weight %>
 
 <div>
-    <%= link_to "もう一度", post_path(@post), method: :delete %>
+    <%= link_to "もう一度", post_path(@post), method: :delete %> <!--比較対象が入力値より小さい場合-->
     <%= link_to "くらべる一覧", items_path %>
 </div>

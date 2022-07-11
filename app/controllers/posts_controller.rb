@@ -8,8 +8,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @item = Item.order("RANDOM()").limit(1)
-    
+    @item = Item.order("RANDOM()").limit(1)    # アイテムをランダムでひとつ表示する
+
   end
 
   def destroy
